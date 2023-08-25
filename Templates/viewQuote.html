@@ -1,0 +1,82 @@
+{% extends 'dashboard.html' %}
+ {%block content%} 
+ {%load static%}
+ {% load crispy_forms_tags %}
+<head>
+  <meta name="Key Words" content="Web Development, Free Blog Hosting,Static Websites,Web Application" />
+  <meta
+    name="description"
+    content="This page is creating new services that are offred by NitacagraSoftwares  
+    Such as Free Blog Hosting abd Teaching Learners Web Development"
+  />
+{% block title%}
+    <title>Telone |add Quotation</title>
+{%endblock title%}
+</head>
+
+<body>
+<main class="col-md-9 ms-sm-auto col-lg-10 align-content-center px-md-4"
+     style="width: 78%">
+      <div class="text-center ms-5 ">
+        <ol class="text-start">
+          <h5 class="header-red">Please follow The below Steps When Adding  new Service</h5>
+          <li class="">Add The <strong  class="text-info">Service First</strong>  and Then Click Create</li>
+          <li>Add The<strong  class="text-warning">Detailed Explanation</strong> Next and  then Click Add</li>
+          <li>Add The <strong class="text-success">Functinality</strong>  and then  Click Add</li>
+        </ol>
+      </div>
+     
+          <form id="form-id" method="POST"  class="shadow-lg mx-5 mt-5"
+          style='width: 75%'>
+              {% csrf_token %}
+              <div class=" text-center">
+                <br>
+                <h5  class=" text-info"> Add New Service</h5>
+              </div>
+              {% for message in messages %} {% if message.tags == 'warning'%}
+              <div class=" header-cyan message mt-3 text-center">
+                <p class="text-danger">{{message}}</p>
+              </div>
+              {%endif%} {%endfor%}
+              <br />
+              <div class=" text-start mx-sm-5">
+                <p class="lead">
+                  <strong>{{form.name|as_crispy_field}}</strong>
+                </p>
+                <br />
+                <p class="lead">
+                  <strong>{{form.picture|as_crispy_field}}</strong>
+                </p>
+                <br />
+                <p class="lead">
+                  <strong>{{form.Discription|as_crispy_field}}</strong>
+                </p>
+                <br />
+                <p class="lead"><strong>{{form.specialOffer|as_crispy_field}}</strong>
+                </p>
+                <br /> 
+              </div>
+              <div class="text-center mb-2 ">
+                  <button
+                  type="button"
+                  id="back"
+                  class="btn btn-secondary home more button">
+                  <a href="{% url 'dashboard'%}">Cancel</a>
+                  </button> 
+                  <button type="submit" class="btn  btn-secondary ms-5 button more">
+                    Create
+                  </button>
+
+                </div>
+                <br>
+            
+          </form>
+
+
+ </main>
+  
+  
+
+  <script src="{% static '../static/JS/view.js'%}"></script>
+</body>
+{%endblock content%}

@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+ {% block content%} 
+ {% load static%}
+   {% block title%}
+<head>
+  <meta name="Key Words" content="Nitacagra Softwars Admin Dashboard">
+  <meta name="description" content="This is a platform for NitacagraSoftwares Admins , markerting team, and Accounts team to add and chage something om the website">
+<title>NitacagraSoftwares |Admin Dashboard</title>
+</head>
+{%endblock title%}
+
+<br />
+<br />
+ <section class="text-start my-5 mx-sm-5">
+    <div class="start-center container">
+      {% for message in messages %} {% if message.tags == 'success'%}
+      <div class="error-class">
+        <p class="bg-success lead">{{message}}</p>
+        {%endif%} {%endfor%}
+    </div>
+    
+    <p/>
+       
+        
+        <div class="  row g-5">
+          {% comment %} <div class="col-4">
+            <div class="p-4 border shadow bg-light">
+              <div class="header-blue ">
+                <h3>Welcome
+                </br>
+                    {{user.first_name}} {{user.last_name}}</h3>
+              </div>
+             <hr>
+                <div class="a-tags my-link">
+                <a class ='nav-link .navs-link' href="">My Profile</a>
+                <a href="#">Account Settings</a> 
+              </div>
+            </div> {% endcomment %}
+          {% comment %} </div> {% endcomment %}
+          <div class="col-4">
+            <div class="p-4 border shadow bg-light">
+             <div class="opacity-75 ">
+                <h3 >QOUATATION(E36)</h3>
+              </div>
+              <hr>
+              <div class="">
+                <a class="nav-link .navs-link fs-5 text-cyan" href=" {% url 'addE36' %} ">Add E36</a>
+                <a class="nav-link .navs-link fs-5  text-cyan" href=" {% url 'viewE36' %} ">View All E36</a>
+                <a class="nav-link navs-link fs-5  text-cyan" href="#">Steps of To Follow When Creating E36</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="p-4 border shadow bg-light">
+             <div class="opacity-75 ">
+                <h3 >QOUATATION(E36)</h3>
+              </div>
+              <hr>
+              <div class="">
+                <a class="nav-link .navs-link fs-5 text-cyan" href="">Add E36</a>
+                <a class="nav-link .navs-link fs-5 text-cyan" href="">View All E36</a>
+                <a class="nav-link navs-link  fs-5 text-cyan" href="#">Steps of To Follow When Creating E36</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="p-4 border shadow bg-light">
+             <div class="opacity-75 ">
+                <h3 >QOUATATION(E36)</h3>
+              </div>
+              <hr>
+              <div class="">
+                <a class="nav-link .navs-link fs-5 text-cyan" href="">Add E36</a>
+                <a class="nav-link .navs-link fs-5 text-cyan" href="">View All E36</a>
+                <a class="nav-link navs-link  fs-5 text-cyan" href="#">Steps of To Follow When Creating E36</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="p-4 border shadow bg-light">
+             <div class="opacity-75 ">
+                <h3 >QOUATATION(E36)</h3>
+              </div>
+              <hr>
+              <div class="">
+                <a class="nav-link .navs-link fs-6 text-cyan" href="">Add E36</a>
+                <a class="nav-link .navs-link fs-6 text-cyan" href="">View All E36</a>
+                <a class="nav-link navs-link  fs-6 text-cyan" href="#">Steps of To Follow When Creating E36</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="p-4 border shadow bg-light">
+             <div class="opacity-75 ">
+                <h3 >QOUATATION(E36)</h3>
+              </div>
+              <hr>
+              <div class="">
+                <a class="nav-link .navs-link fs-5 text-cyan" href="">Add E36</a>
+                <a class="nav-link .navs-link fs-5 text-cyan" href="">View All E36</a>
+                <a class="nav-link navs-link  fs-5 text-cyan" href="#">Steps of To Follow When Creating E36</a>
+              </div>
+            </div>
+          </div>
+        </div>    
+      </section>
+  {% endblock content%}

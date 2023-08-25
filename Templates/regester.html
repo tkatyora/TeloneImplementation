@@ -1,0 +1,70 @@
+{% extends 'base.html' %} {%block content%} {%load static%} {% block title%}
+<head>
+  <meta name="Key Words" content="Nitacagra Softwares Creation Of Account" />
+  <meta
+    name="description"
+    content="This page if for admin and customerrs create their accounts on the website "
+  />
+  <title>NitacagraSoftwares| CreateAccount</title>
+</head>
+{%endblock title%} {% load crispy_forms_tags %}
+<section class="regester-hero">
+  <form id="form-id" class="shadow-lg" name="form" method="post">
+    {%csrf_token%}
+    <br />
+    <div class="message mt-3 mb-2 text-center">
+      <h3>Create new account</h3>
+    </div>
+    <br />
+    {% for message in messages %} {% if message.tags == 'warning'%}
+    <div class="error-class">
+      <p class="error mx-sm-5 lead bg-info">{{message}}</p>
+    </div>
+    {%endif%} {%endfor%}
+    <div class="form">
+      <p class="lead">
+        <strong>{{form.username|as_crispy_field}}</strong>
+      </p>
+      <br />
+      <p class="lead">
+        <strong>{{form.first_name|as_crispy_field}}</strong>
+      </p>
+      <br />
+      <p class="lead">
+        <strong> {{form.last_name|as_crispy_field}}</strong>
+      </p>
+      <br />
+      <p class="lead">
+        <strong> {{form.email|as_crispy_field}}</strong>
+      </p>
+      <br />
+      {% comment %}
+      <p class="lead">
+        <strong> {{form2.city|as_crispy_field}}</strong>
+      </p>
+      <br />
+      <p class="lead">
+        <strong> {{form2.phoneNumber|as_crispy_field}}</strong>
+      </p>
+      <br />
+      {% endcomment %}
+
+      <p class="lead">
+        <strong> {{form.password1|as_crispy_field}} </strong>
+      </p>
+      <br />
+      <p class="lead">
+        <strong> {{form.password2|as_crispy_field}}</strong>
+      </p>
+      <br />
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn mt-3 btn-secondary button mb-4">
+        submit
+      </button>
+    </div>
+  </form>
+</section>
+{% comment %}
+<script src="../static/JS/regester.js"></script>
+{% endcomment %} {%endblock content%}
