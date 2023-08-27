@@ -26,20 +26,29 @@ class addQouteForm(ModelForm):
                                       'cols':5, 
                                   }
                               ))
-    File = forms.FileField(label= 'Upload The E36', max_length=100, required=True)
+    File = forms.FileField(label= 'Upload The E36', max_length=100, required=True, widget=forms.FileInput(
+                                  attrs={
+                                       'class':'form-control'
+                                  }
+                              ))
     DateReceived= forms.DateTimeField(label='Date You Receive The E36', required=True ,widget = forms.DateInput(
      attrs={
          'type':'date',
          'max':today_date ,
-         'min':min_date
-           
-        
-         
-     }
+        'min':min_date
+        }
     ))
+    # TimeReceived= forms.DateTimeField(label='Date You Receive The E36', required=True ,widget = forms.DateInput(
+    #  attrs={
+    #      'type':'date',
+    #      'max':today_date ,
+    #     'min':min_date
+    #     }
+    # ))
+
     class Meta: 
         model = Quotation
-        fields = ['File','Name','Type','DateReceived','Receivedfrom','comments','Duration']
+        fields = ['File','Name','Type','DateReceived','Receivedfrom','comments']
         
         
     

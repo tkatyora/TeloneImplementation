@@ -1,0 +1,53 @@
+{% extends 'dashboard.html' %}
+ {%block content%} 
+ {%load static%}
+ {% load crispy_forms_tags %}
+<head>
+  <meta name="Key Words" content="Web Development, Free Blog Hosting,Static Websites,Web Application" />
+  <meta
+    name="description"
+    content="This page is creating new services that are offred by NitacagraSoftwares  
+    Such as Free Blog Hosting abd Teaching Learners Web Development"
+  />
+{% block title%}
+    <title>Telone |Steps To Follow</title>
+{%endblock title%}
+</head>
+
+<body>
+<main class="col-md-9 col-lg-10 align-content-center px-md-4"
+     style="width: 75%">
+     <main class="col-md-9  col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h5 mt-3"> <a  class= 'nav-link .navs-link fs-6 ' href="">Steps To follow When Creatig a Qoutation(E36)-Word Document</a></h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm  btn-outline-secondary">Click To Download</button>
+          </div>
+        </div>
+      </div>
+  </main>
+          <div class=" text-start mt-1"
+          >
+          <br>
+              <div class="text-start">
+                <h4  class="fw-bolder"> Steps To Follow When Creating E36</h4>
+              </div>
+             
+              <br />
+             
+           <div>
+            <button class="btn btn-sm  btn-outline-info text-center">
+              <a class="nav-link .navs-link fs-6 "
+               href="{% url 'dashboard'%}">Back To Main dashboard</a></button>
+           </div> 
+          </div>
+
+
+ </main>
+  
+  
+
+  <script src="{% static '../static/JS/view.js'%}"></script>
+</body>
+{%endblock content%}

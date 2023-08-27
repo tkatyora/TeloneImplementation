@@ -10,7 +10,7 @@
     Such as Free Blog Hosting abd Teaching Learners Web Development"
   />
 {% block title%}
-    <title>Telone |add Quotation</title>
+    <title>Telone |Weekly Reports</title>
 {%endblock title%}
 </head>
 
@@ -19,7 +19,7 @@
      style="width: 75%">
      <main class="col-md-9  col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Dashboard</h1>
+        <h1 class="h2">Week {{week}} Reports</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group me-2">
             <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
@@ -35,45 +35,42 @@
           <div class=" text-start mt-1"
           >
           <br>
-              <div class=" text-center">
-                <h5  class=" text-info"> All Quotation(E36)</h5>
+              <div class=" text-start">
+                <h5  class="fw-bolder">LIST OF ALL 3E6</h5>
               </div>
-              {% for message in messages %} {% if message.tags == 'warning'%}
-              <div class=" header-cyan message mt-3 text-center">
-                <p class="text-danger">{{message}}</p>
-              </div>
-              {%endif%} {%endfor%}
+              
               <br />
             
               <table class="table table-bordered table-striped table-sm">
           <thead>
-            <tr class="bg-info">
-              <th scope="col">File(Click To Download)</th>
-              <th scope="col">E36 Name</th>
+            <tr class="bg-info"></th>
+              <th scope="col">Name of E36</th>
+              <th scope="col">Type of Service</th>
               <th scope="col">Received From </th>
-              <th scope="col">Services</th>
-              <th scope="col">Date Received E36</th>
-              <th scope="col">View More</th>
-             
+              <th scope="col">Duration(hrs)</th>
+              <th scope="col">DateReceived</th>
+              <th scope="col">DateSubmited</th>
             </tr>
           </thead>
           <tbody>
+            <h1>{{data2.Name}}</h1>
             {% for data  in E36 %}
+            {% comment %} {% if data.DateReceived == today or data.DateReceived == min %}  {% endcomment %}
             <tr >
-              <td><a class="nav-link .navs-link fs-6 text-info" href="{{data.FileUrl}}">{{data.File}}</a></td>
               <td  >{{data.Name}}</td>
-              <td >{{data.Receivedfrom}}</td>
+              <td >{{data.DateReceived}}</td>
               <td>{{data.Type}}</td>
-              <td>{{data.DateReceived}} </td>
-              <td> <a class="text-success nav-link navs-link fs-6" href="{% url 'DeleteE36' data.id %}">View</a></td>
-              
+              <td>{{data.DurationField}} Hours</td>
+              <td>{{data.DateReceived}}</td>
+              <td>{{data.DateSubmited}}</td>
             </tr>
+            {% comment %} {% endif %} {% endcomment %}
             {%endfor%} 
           </tbody>
         </table>
              
            <div>
-            <button class="text-center"><a href="{% url 'dashboard'%}">Back To Main dashboard</a></button>
+            <button class="text-center btn btn-sm btn-outline-info"><a class="nav-link navs-link  fs-6 " href="{% url 'dashboard'%}">Back To Main dashboard</a></button>
            </div> 
           </div>
 

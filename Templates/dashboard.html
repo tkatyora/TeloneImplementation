@@ -5,10 +5,10 @@
   <body>
     <!-- the navbar -->
     <header
-      class="navbar navbar-dark sticky-top bg-light flex-md-nowrap p-0 shadow">
+      class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-1   shadow">
       <a href="../html.pages/home.html" 
-      class=" navbar-brand col-md-3 col-lg-2 mb-3 me-0 px-3 fs-3 navbar-brand text-info">
-            Telone  <span class="sub-logo text-black">Implementation</span></a > 
+              class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-5">
+            Telone  <span class="text-black">Implementation</span></a > 
       <button
         class="navbar-toggler position-absolute d-md-none collapsed"
         type="button"
@@ -20,12 +20,12 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-     <form class="p-2 mb-1 mt-1 bg-dark border-bottom border-dark">
-        <input type="search" class=" w-100 rounded-2 border-0 form-control form-control-dark"
-         autocomplete="false" 
-         placeholder="Search Services You Want"
-         aria-label="Search">
-      </form> 
+      <form action="" class="w-100 rounded-5 d-flex ms-5 ">
+        <input class="form-control form-control-dark w-50 rounded-5 border-0" type="text"
+         placeholder="Search E36 ,Evaluations, Repoorts and Purchase Papers" aria-label="Search">
+         <button class="bg-info rounded-5 border-0">Search</button>
+      </form>
+     
      <div class="dropdown me-4">
               <a
                 href="#"
@@ -34,16 +34,15 @@
                 aria-expanded="false"
               >
                 <img
-                  src=" {% static '../static/admin/imagies/takudzwa.jpg'%}"
+                  src=" {% static '../static/Images/Capture.PNG'%}"
                   alt="profilepicture"
                   width="32"
                   height="32"
                   class="rounded-circle me-2"
-                />
-                <strong class="text-black">{{user.email}}</strong>
+                /> 
+                <strong class="text-white">tkatyora@gmail.com</strong>
               </a>
               <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                <li><a class="dropdown-item" href="#">Create a New Report</a></li>
                 <li><a class="dropdown-item" href="#">Settings</a></li>
                 <li><a class="dropdown-item" href="#">Profile</a></li>
                 <li><hr class="dropdown-divider" /></li>
@@ -54,21 +53,25 @@
     </header>
     <div class="container-fluid">
   <div class="row">
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse" style='width: 28%'>
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light shadow  sidebar collapse" style='width: 25%'>
       <div class="position-sticky pt-3 sidebar-sticky">
         <br>
-        <span class="h5 ms-3 text-center mt-5 text-info">Quotations</span>
+        <span class="h4 ms-3 text-center mt-5 text-info fs-italic">Quotations</span>
         <ul class="nav flex-column">
-          <li class="nav-item ">
-            <a class="nav-link text-black" href="">
-              <span data-feather="file" class="align-text-bottom"></span>
+          <li class="nav-item text-white">
+            <a class="nav-link " href="{% url 'addE36' %}">
+              <span data-feather="file" class=" text-black align-text-bottom"></span>
              Add Quotation
             </a>     
-            <a class="nav-link text-black" href="">
+            <a class="nav-link text-black" href="{% url 'viewE36' %}">
               <span data-feather="file" class="align-text-bottom"></span>
              View Quotations
+            </a> 
+            <a class="nav-link text-black" href="{% url 'what_is_e36' %}">    
+              <span data-feather="file" class="align-text-bottom"></span>
+              What is a Quotation(E36)?
             </a>     
-            <a class="nav-link text-black"  href="">
+            <a class="nav-link text-black"  href="{% url 'stepsToFollow' %}">
               <span data-feather="file" class="align-text-bottom"></span>
              Read How To Create Quotations
             </a>     
@@ -80,28 +83,8 @@
              
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="users" class="align-text-bottom"></span>
-              Customers
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-              Reports
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="layers" class="align-text-bottom"></span>
-              Integrations
-            </a>
-          </li>
-        </ul>
-
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
-          <span>Saved reports</span>
+          <span>Evaluation</span>
           <a class="link-secondary" href="#" aria-label="Add a new report">
             <span data-feather="plus-circle" class="align-text-bottom"></span>
           </a>
@@ -110,43 +93,92 @@
           <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="file-text" class="align-text-bottom"></span>
-              Current month
+              Financial Evaluation
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="file-text" class="align-text-bottom"></span>
-              Last quarter
+             Tenchnical Evaluation
+            </a>
+          </li>
+        </ul>
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+          <span>Reports</span>
+          <a class="link-secondary" href="#" aria-label="Add a new report">
+            <span data-feather="plus-circle" class="align-text-bottom"></span>
+          </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <a class="nav-link text-black"  href="{% url 'weekly' %}">
+              <span data-feather="file-text" class="align-text-bottom"></span>
+              Weekly Report
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="file-text" class="align-text-bottom"></span>
-              Social engagement
+              First Quarter Report
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="file-text" class="align-text-bottom"></span>
-              Year-end sale
+             Second Quarter Report
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text" class="align-text-bottom"></span>
+              Third Quarter Report
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text" class="align-text-bottom"></span>
+              Fourth Quarter Report
+            </a>
+          </li>
+        </ul>
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+          <span>Purchase Paper</span>
+          <a class="link-secondary" href="#" aria-label="Add a new report">
+            <span data-feather="plus-circle" class="align-text-bottom"></span>
+          </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text" class="align-text-bottom"></span>
+             Create The Purchase Paper
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text" class="align-text-bottom"></span>
+              Specifications
             </a>
           </li>
         </ul>
       </div>
     </nav>
+     
     {% block content %} {% endblock content %}
-    <script src="{% static '../static/admin/style/js/bootstrap.bundle.js'%}"></script>
+    <script src="{% static '../static/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'%}"></script>
   </body>
-<footer class="py-5 mt-0"> 
+<br>
+<footer class="py-5  text-dark mt-0"> 
       <div class="container"> 
           <div class="row center">
               <div class="col-6 col-md-2 mb-3">
-                  <h5 class="header-blue">Section</h5>
-                  <ul class="nav flex-column">
-                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Services</a></li>
-                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Blog</a></li>
-                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                  <h5 class="header-blue">What We Do</h5>
+                  <hr>
+                  <ul class="nav  flex-column">
+                  <li class="nav-item mb-2 text-dark"><a href="#" class="nav-link p-0 text-muted">E36</a></li>
+                  <li class="nav-item mb-2 text-dark"><a href="#" class="nav-link p-0 text-muted">Reports</a></li>
+                  <li class="nav-item mb-2 text-dark"><a href="#" class="nav-link p-0 text-muted">Evaluations</a></li>
+                  <li class="nav-item mb-2 text-dark"><a href="#" class="nav-link p-0 text-muted">Purchase Paper</a></li>
                   </ul>
               </div> 
               
