@@ -17,6 +17,7 @@ class Quotation(models.Model):
 	created = models.DateTimeField(_("created at"), auto_now=True, auto_now_add=False)
  
  
+ 
 	@property
 	def FileUrl(self):
 		try:

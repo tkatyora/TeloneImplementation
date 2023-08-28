@@ -55,7 +55,7 @@
           <tbody>
             <h1>{{data2.Name}}</h1>
             {% for data  in E36 %}
-            {% comment %} {% if data.DateReceived == today or data.DateReceived == min %}  {% endcomment %}
+            {% if data.DataReceived < today or  data.DateReceived > min %}  
             <tr >
               <td  >{{data.Name}}</td>
               <td >{{data.DateReceived}}</td>
@@ -64,7 +64,7 @@
               <td>{{data.DateReceived}}</td>
               <td>{{data.DateSubmited}}</td>
             </tr>
-            {% comment %} {% endif %} {% endcomment %}
+           {% endif %}
             {%endfor%} 
           </tbody>
         </table>

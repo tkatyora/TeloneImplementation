@@ -34,7 +34,7 @@ class CreateUser(UserCreationForm):
                                      
                                   }))
    
-
+    #Ecnum = forms.IntegerField(label ='Enter Your EC Number', required=False)
     class Meta:
         model = User
         fields = ['first_name', 'username','email','password1','password2'] 

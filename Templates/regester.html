@@ -5,11 +5,14 @@
     name="description"
     content="This page if for admin and customerrs create their accounts on the website "
   />
-  <title>NitacagraSoftwares| CreateAccount</title>
+  <title>Telone National Implementation| CreateAccount</title>
 </head>
 {%endblock title%} {% load crispy_forms_tags %}
-<section class="regester-hero">
-  <form id="form-id" class="shadow-lg" name="form" method="post">
+<section class="container-fluid">
+  <br>
+  <br>
+  <form id="form-id" class="shadow-lg  mt-5 mb-5 align-content-center " name="form" method="post"
+  style="width:420px">
     {%csrf_token%}
     <br />
     <div class="message mt-3 mb-2 text-center">
@@ -21,42 +24,26 @@
       <p class="error mx-sm-5 lead bg-info">{{message}}</p>
     </div>
     {%endif%} {%endfor%}
-    <div class="form">
+    <div class="form mx-sm-4">
       <p class="lead">
         <strong>{{form.username|as_crispy_field}}</strong>
       </p>
       <br />
       <p class="lead">
-        <strong>{{form.first_name|as_crispy_field}}</strong>
-      </p>
-      <br />
-      <p class="lead">
-        <strong> {{form.last_name|as_crispy_field}}</strong>
-      </p>
-      <br />
-      <p class="lead">
         <strong> {{form.email|as_crispy_field}}</strong>
       </p>
-      <br />
-      {% comment %}
-      <p class="lead">
-        <strong> {{form2.city|as_crispy_field}}</strong>
-      </p>
-      <br />
-      <p class="lead">
-        <strong> {{form2.phoneNumber|as_crispy_field}}</strong>
-      </p>
-      <br />
-      {% endcomment %}
-
+     
       <p class="lead">
         <strong> {{form.password1|as_crispy_field}} </strong>
       </p>
-      <br />
+      
       <p class="lead">
         <strong> {{form.password2|as_crispy_field}}</strong>
       </p>
-      <br />
+      {% comment %} <p class="lead">
+        <strong> {{form.Ecnum|as_crispy_field}}</strong>
+      </p> {% endcomment %}
+     
     </div>
     <div class="text-center">
       <button type="submit" class="btn mt-3 btn-secondary button mb-4">

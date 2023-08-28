@@ -1,21 +1,24 @@
 from django.shortcuts import render, redirect
 from .models import *
-from .decorators import unauthenticated_user
 from .forms import CreateUser
+from .decorators import unauthenticated_user
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required ,permission_required
 from django.contrib.auth.models import User
 
 # Create your views here.
 # collecting The Data from Database
-advertismentdata = home.objects.all()
-alluser = User.objects.all()
 
-@unauthenticated_user
+second_slide = home.objects.get(id='2')
+first_slide = home.objects.get(id='1')
+last_slide = home.objects.get(id='3')
+# @unauthenticated_user
 def home(request):
     content ={}
     content ={
-        
+        'second_slide' : second_slide,
+        'first_slide': first_slide,
+        'last_slide': last_slide,
     }
     return render(request , 'index.html' , content)
 
@@ -24,14 +27,9 @@ def home(request):
 @unauthenticated_user
 def signup(request):
     if request.method == 'POST':
-        userForm = CreateUserForm(request.POST)
+        userForm = CreateUser(request.POST)
         if userForm.is_valid():
             user = userForm.save()
-            # userForm.save(commit = False)
-            # profileForm = CreateProfileForm(request.POST)
-            # if profileForm.is_valid():
-            user = userForm.save()
-            # profileForm.save()
             username = userForm.cleaned_data.get('username')
             message = 'Account for',{username},'have been succesfully created'
             messages.success(request,message )
@@ -41,13 +39,11 @@ def signup(request):
             messages.warning(request,'User Form Is Not Valid' )
             return redirect('sign_up')           
     else:
-        userForm = CreateUserForm()
+        userForm = CreateUser()
         
     content={}
     content = {
-        'form' : userForm ,
-        # 'form2': profileForm
-        }
+        'form' : userForm , }
     return render(request, 'regester.html' , content)
 
 
