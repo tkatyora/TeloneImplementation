@@ -43,13 +43,16 @@
             
               <table class="table table-bordered table-striped table-sm">
           <thead>
+
             <tr class="bg-info"></th>
-              <th scope="col">Name of E36</th>
-              <th scope="col">Type of Service</th>
-              <th scope="col">Received From </th>
-              <th scope="col">Duration(hrs)</th>
-              <th scope="col">DateReceived</th>
-              <th scope="col">DateSubmited</th>
+              <th scope="col">Customer/Client Name</th>
+              <th scope="col">Project Scope</th>
+              <th scope="col">Start Date</th>
+              <th scope="col">Finish Date</th>
+              <th scope="col">Duration</th>
+              <th scope="col">Value</th>
+              <th scope="col">This Week Accomplishments</th>
+              
             </tr>
           </thead>
           <tbody>
@@ -63,6 +66,7 @@
               <td>{{data.DurationField}} Hours</td>
               <td>{{data.DateReceived}}</td>
               <td>{{data.DateSubmited}}</td>
+              <td>E36 {{data.Status}}</td>
             </tr>
            {% endif %}
             {%endfor%} 

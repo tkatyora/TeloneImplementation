@@ -5,14 +5,15 @@ from .decorators import unauthenticated_user
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required ,permission_required
 from django.contrib.auth.models import User
+from django.contrib.auth import login,logout,authenticate
 
 # Create your views here.
 # collecting The Data from Database
 
-second_slide = home.objects.get(id='2')
-first_slide = home.objects.get(id='1')
-last_slide = home.objects.get(id='3')
-# @unauthenticated_user
+first_slide = home.objects.first()
+second_slide = home.objects.all()[1:1]
+last_slide = home.objects.last()
+@unauthenticated_user
 def home(request):
     content ={}
     content ={
@@ -56,10 +57,10 @@ def signin(request):
         if User is not None:
             login(request, User)
             messages.success(request, 'Log  Successfully')
-            return redirect('sign_up') 
-        # else:
-        #     messages.warning(request, 'Invalid Username and  Paasword/nPlease Try again')
-        #     return redirect('dashboard')
+            return redirect('dashboard') 
+        else:
+            messages.warning(request, 'Invalid Username and  Paasword')
+            return redirect('sign_in')
                       
     return render(request, 'login.html' )
 

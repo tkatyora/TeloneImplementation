@@ -35,10 +35,10 @@ def WhatIsE36(request):
 def AddQuote(request):
     if request.method == 'POST':
         form = addQouteForm(request.POST, request.FILES)
-        
         if form.is_valid():
-            
-            form.save() 
+            form.save(commit=False)
+            Quotation.user = request.user
+            form.save()
             mesage= f'Quoatation added succesfully'
             messages.success(request,mesage)
             return redirect('viewE36')   

@@ -22,12 +22,13 @@
         <h1 class="h2">Dashboard</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group me-2">
-            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+            
+            <input type="search"  placeholder="search E36" class="btn btn-sm btn-outline-secondary"></input>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Search</button>
           </div>
           <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
             <span data-feather="calendar" class="align-text-bottom"></span>
-            This week
+            Filter
           </button>
         </div>
       </div>
@@ -37,6 +38,7 @@
           <br>
               <div class=" text-center">
                 <h5  class=" text-info"> All Quotation(E36)</h5>
+                  <h6>NB:Double Click The name of The Client To View More infomation About The E36</h6>
               </div>
               {% for message in messages %} {% if message.tags == 'warning'%}
               <div class=" header-cyan message mt-3 text-center">
@@ -44,16 +46,19 @@
               </div>
               {%endif%} {%endfor%}
               <br />
-            
+           
               <table class="table table-bordered table-striped table-sm">
           <thead>
+
             <tr class="bg-info">
               <th scope="col">File(Click To Download)</th>
-              <th scope="col">E36 Name</th>
+              <th scope="col">Name Clint</th>
               <th scope="col">Received From </th>
               <th scope="col">Services</th>
+               <th scope="col">Status</th>
               <th scope="col">Date Received E36</th>
-              <th scope="col">View More</th>
+              <th scope="col">Duration</th>
+              
              
             </tr>
           </thead>
@@ -64,7 +69,9 @@
               <td  >{{data.Name}}</td>
               <td >{{data.Receivedfrom}}</td>
               <td>{{data.Type}}</td>
+              <td>{{data.Status}}</td>
               <td>{{data.DateReceived}} </td>
+                <td>{{data.Duration}}</td>
               <td> <a class="text-success nav-link navs-link fs-6" href="{% url 'DeleteE36' data.id %}">View</a></td>
               
             </tr>
@@ -73,7 +80,7 @@
         </table>
              
            <div>
-            <button class="text-center"><a href="{% url 'dashboard'%}">Back To Main dashboard</a></button>
+            <button class="text-center btn btn-sm btn-outline-info"><a class="nav-link p-0 text-muted" href="{% url 'dashboard'%}">Back To Main dashboard</a></button>
            </div> 
           </div>
 

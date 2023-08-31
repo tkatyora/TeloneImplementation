@@ -17,9 +17,12 @@ days = (today_date - min_date)
 
 
 class addQouteForm(ModelForm):
-    Type =forms.ChoiceField(choices=Quotation.name, label='Select the Type of Srvice',required=True,help_text='E36 for GPON , Radio are not made at this Department')
-    Name =forms.CharField(label='Enter Name of E36',required=True,help_text='The Name Of The Client Who Requre Service eg FBC SAMORA MACHEL')
-    comment=forms.CharField(label='Add any Comments You Have', required=False, help_text='Coments Should Be 150 words ',
+    Type =forms.ChoiceField(choices=Quotation.name, label='Project Scope',required=True)
+    Name =forms.CharField(label='Name of Client',required=True,help_text='Client Who Require Service eg FBC SAMORA MACHEL')
+    City =forms.CharField(label='City of Client',required=True,help_text='eg Harare')
+    Total = forms.IntegerField(label='Grand Total )',help_text='The Total includes the Materials, Transport, Labour, Wayleaves and Engineering costs')
+    Status = forms.ChoiceField(choices=Quotation.status , label='Status of E36' ,help_text='If The E36 is completed Select Completed')
+    comment=forms.CharField(label='Add any Comments You Have', required=False, help_text='Write Anything related to the e36(optional) ',
                               widget=forms.Textarea(
                                   attrs={
                                       'rows':5,
@@ -38,17 +41,32 @@ class addQouteForm(ModelForm):
         'min':min_date
         }
     ))
-    # TimeReceived= forms.DateTimeField(label='Date You Receive The E36', required=True ,widget = forms.DateInput(
-    #  attrs={
-    #      'type':'date',
-    #      'max':today_date ,
-    #     'min':min_date
-    #     }
-    # ))
+
+    TimeReceived= forms.DateTimeField(label='Time You Receive The E36', required=True ,widget = forms.DateInput(
+     attrs={
+         'type':'time',
+         
+        }
+    ))
+    DateSubmited= forms.DateTimeField(label='Date You Submit The E36', required=True ,widget = forms.DateInput(
+     attrs={
+         'type':'date',
+         'max':today_date ,
+        'min':min_date
+        }
+    ))
+    TimeSubmited= forms.DateTimeField(label='Time You Submit The E36', required=True ,widget = forms.DateInput(
+     attrs={
+         'type':'time',
+        }
+    ))
+
 
     class Meta: 
         model = Quotation
-        fields = ['File','Name','Type','DateReceived','Receivedfrom','comments']
+        fields =['File','Name','Type','DateReceived',
+         'Receivedfrom','comments','TimeReceived','City',
+         'Total','TimeSubmited','DateSubmited','image']
         
         
     
