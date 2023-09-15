@@ -17,3 +17,11 @@ class home(models.Model):
              url = ''
              
         return url
+class Contacts(models.Model):
+    Name = models.CharField(max_length=50,null=True,blank=True)
+    Created = models.DateTimeField(_("created at"), auto_now=True, auto_now_add=False ,null=True)
+    Extension = models.CharField(max_length=10,null =True,blank=True)
+    Department =models.CharField(max_length=50,null=True,blank=True)
+
+    def __str__(self):
+        return f'Contact of  { self.Name}'

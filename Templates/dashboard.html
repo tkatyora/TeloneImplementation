@@ -8,7 +8,7 @@
       class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-1   shadow">
       <a href="" 
               class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-5">
-           Coorparates  <span class="text-black">Solutions</span></a > 
+           Coorparates  <span class="text-info">Solutions</span></a > 
       <button
         class="navbar-toggler position-absolute d-md-none collapsed"
         type="button"
@@ -20,7 +20,17 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-       <p class="lead text-white">Good Day {{user.username}}</p>
+       <p class="lead  h6 text-white">Good Day {{user.username}} You have <span>No</span> Notifications <i class="fa fa-bell text-info" aria-hidden="true"></i>
+   <!--    {% for dataa in E36%}
+         {% if data.Status == 'Completed'%} -->
+        
+         <!-- {%else%}
+            <span></span> Notifications! <i class="fa fa-bell text-danger" aria-hidden="true"></i>
+          {%endif%}
+      {%endfor%} -->
+
+        </p>
+       
      <div class="dropdown me-4">
               <a
                 href="#"
@@ -55,18 +65,33 @@
              Main Dashboard
             </a>
             <hr>
+            <a class="nav-link h5 text-success" href="{% url 'viewDocuments' %}">
+             Documents
+            </a>
+            <a class="nav-link h5 text-warning" href="{% url 'contacts' %}">
+             Main Conducts
+            </a>
+            <hr>
+        
         <span class="h4 ms-3 text-center mt-5 text-black fs-italic">Quotations(E36)</span>
         <ul class="nav flex-column">
-          <li class="nav-item text-white">
+          <li class="nav-item ">
             <a class="nav-link " href="{% url 'addE36' %}">
               <span data-feather="file" class=" text-black align-text-bottom"></span>
              Add Quotation
-            </a>     
-            <a class="nav-link text-black" href="{% url 'viewE36' %}">
+            </a>  
+            <a class="nav-link " href="{% url 'Calculator' %}">
+              <span data-feather="file" class=" text-black align-text-bottom"></span>
+            Calculator
+            </a>   
+            <a class="nav-link " href="{% url 'viewMyE36' %}">
               <span data-feather="file" class="align-text-bottom"></span>
-             View Quotations
+             View  My Quotations
             </a>     
-                
+              <a class="nav-link " href="{% url 'viewE36' %}">
+              <span data-feather="file" class="align-text-bottom"></span>
+             View All Quotations
+            </a> 
           </li>
         </ul>
         <hr>
@@ -151,15 +176,15 @@
           </li>
         </ul>
         <hr>
-        <span class="h4 ms-3 text-center mt-5 text-black fs-italic">General Infomation</span>
+             <span class="h4 ms-3 text-center mt-5 text-black fs-italic">General Infomation</span>
         <ul class="nav flex-column">
           <li class="nav-item text-white">
             
-            <a class="nav-link " href="{% url 'addE36' %}">
+            <a class="nav-link " href="">
               <span data-feather="file" class=" text-black align-text-bottom"></span>
             Information About Department
             </a>     
-            <a class="nav-link text-black" href="{% url 'viewE36' %}">
+            <a class="nav-link text-black" href="{% url 'what_is_e36' %}">
               <span data-feather="file" class="align-text-bottom"></span>
               What is a Quotation(E36)?
             </a> 
@@ -174,6 +199,25 @@
                 
           </li>
       </ul>
+      <hr>
+      <span class="h4 ms-3 text-center mt-5 text-black fs-italic">Manual</span>
+        <ul class="nav flex-column">
+          <li class="nav-item ">
+            <a class="nav-link " href="{% url 'stepsToFollow' %}">
+              <span data-feather="file" class=" text-black align-text-bottom"></span>
+            Qutations
+            </a>     
+            <a class="nav-link text-black " href="{% url 'viewE36' %}">
+             
+             VoIP Phones Configurations
+            </a>     
+              <a class="nav-link " href="{% url 'viewE36' %}">
+              <span data-feather="file" class="align-text-bottom"></span>
+           
+            </a> 
+          </li>
+        </ul>
+        <hr>
       </div>
     </nav>
      

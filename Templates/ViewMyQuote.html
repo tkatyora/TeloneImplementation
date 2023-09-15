@@ -1,0 +1,93 @@
+{% extends 'dashboard.html' %}
+ {%block content%} 
+ {%load static%}
+ {% load crispy_forms_tags %}
+<head>
+  <meta name="Key Words" content="Web Development, Free Blog Hosting,Static Websites,Web Application" />
+  <meta
+    name="description"
+    content="This page is creating new services that are offred by NitacagraSoftwares  
+    Such as Free Blog Hosting abd Teaching Learners Web Development"
+  />
+{% block title%}
+    <title>Telone |add Quotation</title>
+{%endblock title%}
+</head>
+
+<body>
+<main class="col-md-9 col-lg-10 align-content-center px-md-4"
+     style="width: 75%">
+     <main class="col-md-9  col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group me-2">
+            
+            <input type="search"  placeholder="search E36" class="btn btn-sm btn-outline-secondary"></input>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Search</button>
+          </div>
+          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+            <span data-feather="calendar" class="align-text-bottom"></span>
+            Filter
+          </button>
+        </div>
+      </div>
+  </main>
+          <div class=" text-start mt-1"
+          >
+          <br>
+              <div class=" text-center">
+                <h5  class=" text-info"> All Quotation(E36)</h5>
+                  <h6>NB:Double Click The name of The Client To View More infomation About The E36</h6>
+              </div>
+             
+           
+        <table class="table table-bordered table-striped table-sm">
+          <thead>
+
+            <tr class="bg-info">
+              <th scope="col">File(Click To Download)</th>
+              <th scope="col">Name Client</th>
+              <th scope="col">Received From </th>
+              <th scope="col">Services</th>
+               <th scope="col">Status</th>
+              <th scope="col">Date Received E36</th>
+              <th scope="col">Duration</th>
+              <th scope="col">Responsible</th>
+              
+              
+             
+            </tr>
+          </thead>
+          <tbody>
+            {% for data  in E36 %}
+            {%if user.username == user.username%}
+            <tr >
+              <td><a class="nav-link .navs-link fs-6 text-info" href="{{data.FileUrl}}">{{data.File}}</a></td>
+              <td  ><a class="text-success nav-link navs-link fs-6" href="{% url 'DetailedE36' data.id %}">{{data.NameClient}}</a></td>
+              <td >{{data.Receivedfrom}}</td>
+              <td>{{data.Type}}</td>
+              <td>{{data.Status}}</td>
+              <td>{{data.DateReceived}} </td>
+                <td>{{user.username}}</td>
+              <td> {{data.created_by}}</td>
+              
+            </tr>
+            {%endif%}
+            {%endfor%} 
+          </tbody>
+        </table>
+             
+           <div>
+            <button class="text-center btn btn-sm btn-outline-info"><a class="nav-link p-0 text-muted" href="{% url 'dashboard'%}">Back To Main dashboard</a></button>
+           </div> 
+          </div>
+
+
+ </main>
+  
+  
+
+  <script src="{% static '../static/JS/view.js'%}"></script>
+</body>
+{%endblock content%}

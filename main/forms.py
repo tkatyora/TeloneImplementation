@@ -39,4 +39,38 @@ class CreateUser(UserCreationForm):
         model = User
         fields = ['first_name', 'username','email','password1','password2'] 
 
-        
+
+
+class AddContactForm(ModelForm):
+   
+    Name = forms.CharField( label='Enter  Name',
+                                 widget=forms.TextInput(
+                                  attrs={
+                                      
+                                      'class':'form-control input',
+                                       'spellcheck':"true",
+                                       'type':'text'
+                                  }
+                              ))
+  
+    Extension = forms.CharField( label='Enter Extension',
+                                widget=forms.TextInput(
+                                  attrs={
+                                      
+                                      'class':'form-control input',
+                                       'spellcheck':"true",
+                                       'type':'text'
+                                  }))
+    Department = forms.CharField( label='Enter Department or Location',
+                              widget=forms.TextInput(
+                                  attrs={
+                                      
+                                      'class':'form-control input',
+                                       'spellcheck':"true",
+                                     
+                                  }))
+   
+   
+    class Meta:
+        model = Contacts
+        fields = ['Name', 'Extension','Department'] 

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import *
-from .forms import CreateUser
+from e36.models import *
+from .forms import *
 from .decorators import unauthenticated_user
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required ,permission_required
@@ -9,7 +10,8 @@ from django.contrib.auth import login,logout,authenticate
 
 # Create your views here.
 # collecting The Data from Database
-
+E36 = Quotation.objects.all().order_by('-DateReceived')
+contact = Contacts.objects.all()
 first_slide = home.objects.first()
 second_slide = home.objects.all()[1:1]
 last_slide = home.objects.last()
@@ -74,5 +76,34 @@ def signout(request):
 #dashaboard
 
 def dashboard(request):
-    return render(request , 'mainDashboard.html')
+    content ={}
+    content ={
+    'E36':E36
+    }  
+    return render(request , 'mainDashboard.html',content)
 
+#For Conducts
+def contacts(request):
+    content = {}
+    content={
+        'contacts': contact
+    }
+    return render(request , 'contacts.html',content)
+
+def addConducts(request):
+    if request.method == 'POST':
+        contactForm = AddContactForm(request.POST)
+        if  contactForm.is_valid():
+            form = contactForm.save()
+            return redirect('contacts') 
+        else:
+            messages.warning(request,'User Form Is Not Valid' )
+                    
+    else:
+       contactForm = AddContactForm()
+        
+    content={}
+    content = {
+        'form' : contactForm }
+   
+    return render(request , 'addcontact.html',content)
