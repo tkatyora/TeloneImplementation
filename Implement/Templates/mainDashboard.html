@@ -1,0 +1,43 @@
+{% extends 'dashboard.html' %}
+ {% block content%} 
+ {% load static%}
+   {% block title%}
+<head>
+  <meta name="Key Words" content="Nitacagra Softwars Admin Dashboard">
+  <meta name="description" content="This is a platform for NitacagraSoftwares Admins , markerting team, and Accounts team to add and chage something om the website">
+<title>Telone |Attachee Dashboard</title>
+</head>
+{%endblock title%}
+
+<body>
+<main class="col-md-9 col-lg-10 align-content-center px-md-4"
+     style="width: 75%">
+    <section class="text-start my-5 mx-sm-5">
+      <br>
+       
+    <div class="mt-5 ">
+      <h3 class="text-center lead fs-3">Welcome <span class="h3">{{user.first_name.title}} </span> To <br> <span class="text-info">Coorparate Solution </span> <span class="text-warning">Attache System</span> </h3>
+      <br>
+       <br>
+        <br>
+      <h5>This Application is to help you To:</h3>
+      <ul class="text-small ">
+        <li>Manage Your E36</li>
+        <li>Writting the Weekly Report</li>
+        <li>Calculations Of the Financila Part of the Evaluation</li>
+        <li>Creating Purchase Paper</li>
+        <li>Educating You About The Department</li>
+      </ul>
+      <p class="fst-italic fw-bolder">Feel Free To stipulate any faults and inconvenience caused by this application to 0773735227</p>
+      <h6>Enjoy Using This Application ,your Feedback is Greatly Appreciated</h3>
+    </div>    
+</section>
+
+</main>
+  
+  
+
+  <script src="{% static '../static/JS/view.js'%}"></script>
+</body>
+
+  {% endblock content%}

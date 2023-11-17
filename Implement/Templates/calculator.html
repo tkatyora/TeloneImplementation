@@ -1,0 +1,67 @@
+{% extends 'dashboard.html' %}
+ {%block content%} 
+ {%load static%}
+ {% load crispy_forms_tags %}
+{% block title%}
+<head>
+  <meta name="Key Words" content="Web Development, Free Blog Hosting,Static Websites,Web Application" />
+  <meta
+    name="description"
+    content="This page is creating new Detailed Discription of  services including service type and price aswell as functinality"
+  />
+    <title>National Implementation | Add Qouatation</title>
+{%endblock title%}
+</head>
+<body>
+ <main class="col-md-9 ms-sm-auto col-lg-10 align-content-center px-md-4"
+     style="width: 68%">
+   <form id='form-id' class="shadow-lg mt-5 mb-5"  method = 'POST'
+        style="width:400px"  >
+          {% csrf_token %}
+          <div class="mb-3  form"> 
+            <div class="error-class">
+              <br>
+             
+              <h5 class="login mx-sm-5 text-info   text-center ">Coorparates Solutions <span class="text-warning">(Calculator)</span> </h5>
+            
+            
+          <div class="form mb-3 mx-sm-5">
+             <label for ='username' class="form-label user">Enter Fibre Length</label>
+             <input
+              type="number"
+              name="fibre"
+              class="form-control input"
+              id='username'
+              required
+              aria-describedby="emailHelp"
+              spellcheck="true"
+            />
+          </div>
+          <div class="mb-3 mx-sm-5 form">
+            <label for="password" class="form-label"> Enter Transport Distance</label>
+            <input
+              type="number"
+              name="Transport"
+              class="form-control input"
+              id='passowrd'
+              
+            /> 
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn mb-4 w-50 btn-info button">
+              Calculate
+            </button>
+          </div>
+
+          <div class="text-center">
+            <p>10 m Poles  :{{tenpoles}} <p>
+            <p>7.5 m Poles :{{sevenpoles}} <p>
+            <p>Deadend Set :{{tenpoles}} <p>
+            <p>Deadend Set :{{sevenpoles}} <p>
+            <p>Stay Set :{{tenpoles}} <p>
+            <p>Stay Set Preparation :{{tenpoles}} <p>
+          </div>
+        </form>
+</main>
+</body>
+{%endblock content%}

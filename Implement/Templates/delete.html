@@ -1,0 +1,34 @@
+{% extends 'dashboard.html' %}
+ {%block content%} {%load static%}
+  {% block title%}
+<head>
+  <meta name="Key Words" content="Nitacagra Softwars Admin Dashboard">
+  <meta name="description" content="This is a platform for NitacagraSoftwares Admins , markerting team, and Accounts team to add and chage something om the website">
+<title>Telone |Delete E36</title>
+</head>
+{%endblock title%}
+<body>
+   <main class=" mt-0 container-fluid  align-items-center justify-content-center"
+     style="width: 68%">
+  <form id="form-id" method="POST" class="shadow-lg w-50 mt-5">
+    {%csrf_token%}
+    <br />
+    <div class="message mt-3 text-start mx-sm-5">
+      <h5>Are you sure you want to delete this Quotation(E3)</h5>
+    </div>
+    <div class="text-center">
+      <button
+        type="button"
+        id="back"
+        class="btn btn-secondary home more button"
+      >
+        <a href="{% url 'viewE36'%}"> No </a>
+      </button>
+      <button type="submit" class="btn btn-danger ms-5 more">Yes</button>
+    </div>
+    <br />
+  </form>
+</main>
+  
+</body>
+{%endblock content%}
