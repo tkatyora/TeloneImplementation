@@ -22,11 +22,18 @@ class Quotation(models.Model):
 	#ends here
 	Receivedfrom = models.CharField(_("Name of te Enginner WhomGive you The E36"),default='Enginner ' ,max_length=50)
 	comments = models.TextField(_("Comments"),null =True,blank=True)
-	WeekReport = models.IntegerField(_( "Weekly report"),default= 45,null=True)
+	WeekReport = models.IntegerField(_( "Weekly report"),default= 47,null=True)
 	created_by = models.ForeignKey(User,  on_delete=models.CASCADE ,null=True,blank=True)
 	image = models.ImageField(upload_to = 'picture' ,null=True, blank = True)
 	survey = models.BooleanField(null = True ,default=False)
 	
+	@property
+	def startdate(self):
+		return self.DateReceived.strftime("%d/%m/%Y")
+	@property
+	def enddate(self):
+		return self.DateSubmited.strftime("%d/%m/%Y")
+
 	@property
 	def ImageUrl(self):
 		try:
@@ -49,15 +56,34 @@ class Quotation(models.Model):
 		# time = (self.TimeSubmitted.datetime.time() - self.TimeRecived.datetime.time())
 		# duration = hours + time
 		# striped_hours = str(duration).split('days',1)[0]
-		
-		start = str(self.TimeRecived)
-		end = str(self.TimeSubmitted)
-		start_time = datetime.strptime(start, '%H:%M:%S')
-		end_time = datetime.strptime(end, '%H:%M:%S')
-		duration = end_time - start_time
-		duration_parts = str(duration).split(":")
-		time_parts = duration_parts[:2]
-		new_duration = ":".join(time_parts)
+		start_date = self.DateReceived
+		end_date = self.DateSubmited
+		days = end_date - start_date
+	
+		if days.days == 0:
+			start = str(self.TimeRecived)
+			end = str(self.TimeSubmitted)
+			start_time = datetime.strptime(start, '%H:%M:%S')
+			end_time = datetime.strptime(end, '%H:%M:%S')
+			duration = end_time - start_time
+			duration_parts = str(duration).split(":")
+			time_parts = duration_parts[:2]
+			new_duration = ":".join(time_parts)
+		elif days.days == 1:
+			start = str(self.TimeRecived)
+			end = str(self.TimeSubmitted)
+			start_time_1 = datetime.strptime(start, '%H:%M:%S')
+			end_time_1 = datetime.strptime('16:30:00', '%H:%M:%S')
+			duration_1 = end_time_1 - start_time_1
+			start_time_2 = datetime.strptime('08:00:00', '%H:%M:%S')
+			end_time_2 = datetime.strptime(end, '%H:%M:%S')
+			duration_2 = end_time_2 - start_time_2
+			duration = duration_1 + duration_2
+			duration_parts = str(duration).split(":")
+			time_parts = duration_parts[:2]
+			new_duration = ":".join(time_parts)
+		else:
+			new_duration = 5
 		# grater  = datetime.strptime('07:00', '%H:%M')
 		# if start > grater:
 		# 	start_time = datetime.strptime(new_duration, '%H:%M')

@@ -60,12 +60,13 @@
           </thead>
           <tbody>
             {% for data  in E36 %}
-             {%if not  data.survey and data.WeekReport == 45%}
+             {%if not  data.survey and data.WeekReport == 47%}
             <tr >
               <td  >{{data.NameClient}}</td>
               <td>{{data.Type}}</td>
-              <td >{{data.DateReceived}}</td>
-               <td>{{data.DateSubmited}}</td>
+              <td >{{data.startdate}}</td>
+              <td>{{data.enddate}}</td>
+              
               <td>{{data.DurationField}} </td>
              <td>${{data.Total}}</td>
               <td>E36 {{data.Status}}</td>
@@ -95,7 +96,7 @@
              
             <tr >
               {% for data  in E36 %}
-              {%if  data.WeekReport == 45%}
+              {%if  data.WeekReport == 47%}
               <td  >{{data.NameClient}}</td>
               <td>{{data.Type}}</td>
               <td >{{data.DateReceived}}</td>
