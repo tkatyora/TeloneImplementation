@@ -21,6 +21,34 @@
     <br />
     <div class="message mt-3 text-center">
       <h5 class="text-center">Add The E36 You Are Creating </h5>
+      <br>
+      {% for message in messages %}
+      {% if message.tags == 'success'%}
+        <div class=" alert alert-success">
+          <p class="">{{message}}</p>
+        </div>
+      {%endif%} 
+      {%endfor%}
+      {% if form.errors %}
+        {% for field in form %}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                      {% for message in messages %}
+                        {% if message.tags == 'warning'%}
+                      <p class="">{{message}}</p>
+                        <strong>{{ field.label }}: {{ error|escape }}</strong>
+                    </div>
+                    {%endif%} 
+                  {%endfor%}
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
+
     </div> 
     <br />
     <div class=" text-start mx-sm-5">
@@ -31,9 +59,7 @@
        <p class="lead mt-3">
         <strong>{{form.NameClient|as_crispy_field}}</strong> 
       </p>
-     <p class="lead mt-3">
-        <strong>{{form.City|as_crispy_field}}</strong> 
-      </p>
+    
      
        <p class="lead mt-3">
         <strong>{{form.Type|as_crispy_field}}</strong> 
@@ -59,9 +85,7 @@
       <p class="lead mt-3">
         <strong>{{form.Status|as_crispy_field}}</strong> 
       </p>
-       <p class="lead mt-3 ">
-        <strong>{{form.survey|as_crispy_field}}</strong> 
-      </p>
+       
        <p class="lead mt-3 ">
         <strong>{{form.WeekReport|as_crispy_field}}</strong> 
       </p>

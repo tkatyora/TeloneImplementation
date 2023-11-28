@@ -63,7 +63,7 @@
             {% for data  in E36 %}
             {%if user.username == user.username%}
             <tr >
-              <td><a class="nav-link .navs-link fs-6 text-info" href="{{data.FileUrl}}">{{data.File}}</a></td>
+              <td><a class="nav-link .navs-link fs-6 text-info" href="{{data.FileUrl}}">download</a></td>
               <td  ><a class="text-success nav-link navs-link fs-6" href="{% url 'DetailedE36' data.id %}">{{data.NameClient}}</a></td>
               <td >{{data.Receivedfrom}}</td>
               <td>{{data.Type}}</td>

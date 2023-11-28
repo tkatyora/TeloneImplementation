@@ -6,18 +6,17 @@ from django.contrib import messages
 from .models import *
 from django.contrib.auth.decorators import login_required , permission_required
 import datetime
+from report.views import WeekReportCalculator
+
 count = Quotation.objects.count() 
-today_date = datetime.date.today()
-start_date = datetime.date(today_date.year, 1, 1) 
-# start_date = (today_date - datetime.timedelta(days=1 * 250))
-min_date = (today_date - datetime.timedelta(days=1 * 7))
-days = (today_date - start_date) 
-week = days // 7
+week = WeekReportCalculator()
+print(week)
 
 
 E36 = Quotation.objects.all().order_by('-created')
 Documents = Document.objects.all()
 Steps = Document.objects.last()
+E36Pending = Quotation.objects.filter(Status='Pending').values().count()
 # Create your views here.
 
 #CRUD OPERATIONS OF QUOTATION
@@ -55,12 +54,14 @@ def AddQuote(request):
     if request.method == 'POST':
         form = addQouteForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save(commit=False)
-            Quotation().created_by = request.user
-            form.save()
+            quotation = form.save(commit=False)
+            quotation.created_by = request.user
+            quotation.WeekReport = week
+            quotation.save()
+           
             mesage= f'Quoatation added succesfully'
             messages.success(request,mesage)
-            return redirect('viewE36')   
+            return redirect('addE36')   
         else:
             messages.warning(request, 'Sorry Qoutation not added succesfully')
     else:

@@ -13,12 +13,19 @@
 <main class="col-md-9 col-lg-10 align-content-center px-md-4"
      style="width: 75%">
     <section class="text-start my-5 mx-sm-5">
-      <br>
+      
        
     <div class="mt-5 ">
       <h3 class="text-center lead fs-3">Welcome <span class="h3">{{user.first_name.title}} </span> To <br> <span class="text-info">Coorparate Solution </span> <span class="text-warning">Attache System</span> </h3>
       <br>
-       <br>
+      {% if Pending == 0%}
+       <h3 class="text-center  fw-bolder">You have No Peding E36's </h3>
+
+        {%else%}
+        <a href="{% url 'viewMyE36'%}" class="text-decoration-none "><h3 class="text-center fw-bolder">You have <span class="" > {{Pending}} </span>Pending E36's </h3>
+        </a> 
+      {%endif%}
+        <br>
         <br>
       <h5>This Application is to help you To:</h3>
       <ul class="text-small ">

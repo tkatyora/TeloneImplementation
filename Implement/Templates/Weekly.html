@@ -36,13 +36,46 @@
           >
           <br>
               <div class=" text-start">
-                <h5  class="fw-bolder">LIST OF ALL Week 45  QOUTATIONS</h5>
+                <h5  class="fw-bolder">LIST OF ALL Week {{week}}  QOUTATIONS</h5>
                 <p class="ms-1 ">Currently Completed <span class="text-info">{{count}}</span>  simple corporate quotations in  hours per quote.  </p>
 
               </div>
               
               <br />
-            
+              <table class="table table-bordered table-striped table-sm">
+                <thead>
+      
+                  <tr class="bg-info"></th>
+                    <th scope="col">No. of Quotations Requests Received</th>
+                    <th scope="col">Project Scope</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">Finish Date</th>
+                    <th scope="col">Duration</th>
+                    <th scope="col">Value</th>
+                    <th scope="col">Accomplishments</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                   
+                  <tr >
+                    {% for data  in E36 %}
+                    {%if  data.WeekReport == 48 and data.Status == 'Completed'%}
+                    <td >{{data.NameClient}}</td>
+                    <td>{{data.Type}}</td>
+                    <td >{{data.startdate}}</td>
+                    <td>{{data.enddate}}</td>
+                    <td>{{data.DurationField}} </td>
+                    <td>${{data.Total}}</td>
+                    <td>E36 {{data.Status}}</td>
+                  </tr>
+                  {%endif%}
+                  {%endfor%} 
+                </tbody>
+              </table> 
+              <p class="ms-3">1.2 Completed ({{count}}) simple corporate quotations in  hours per quote.  </p>
+       
         <table class="table table-bordered table-striped table-sm">
           <thead>
 
@@ -51,8 +84,8 @@
               <th scope="col">Project Scope</th>
               <th scope="col">Start Date</th>
               <th scope="col">Finish Date</th>
-              <th scope="col">Duration(h)</th>
-              <th scope="col">Value</th>
+              <th scope="col">Time Received</th>
+              <th scope="col">TimeSubmitted</th>
               <th scope="col">Accomplishments</th>
              
               
@@ -60,15 +93,15 @@
           </thead>
           <tbody>
             {% for data  in E36 %}
-             {%if not  data.survey and data.WeekReport == 47%}
+             {%if   data.Status == 'Completed' and data.WeekReport == 48%}
             <tr >
+              <td>{{data.total_duration}}</td>
               <td  >{{data.NameClient}}</td>
               <td>{{data.Type}}</td>
               <td >{{data.startdate}}</td>
               <td>{{data.enddate}}</td>
-              
-              <td>{{data.DurationField}} </td>
-             <td>${{data.Total}}</td>
+              <td>{{data.TimeRecived}} </td>
+             <td>${{data.TimeSubmitted}}</td>
               <td>E36 {{data.Status}}</td>
               
             </tr>
@@ -76,39 +109,7 @@
             {%endfor%} 
           </tbody>
         </table>
-         <p class="ms-3">1.2 Completed ({{count}}) simple corporate quotations in  hours per quote.  </p>
-       <table class="table table-bordered table-striped table-sm">
-          <thead>
-
-            <tr class="bg-info"></th>
-              <th scope="col">No. of Quotations Requests Received</th>
-              <th scope="col">Project Scope</th>
-              <th scope="col">Start Date</th>
-              <th scope="col">Finish Date</th>
-              <th scope="col">Duration</th>
-              <th scope="col">Value</th>
-              <th scope="col">Accomplishments</th>
-              
-            </tr>
-          </thead>
-          <tbody>
-            
-             
-            <tr >
-              {% for data  in E36 %}
-              {%if  data.WeekReport == 47%}
-              <td  >{{data.NameClient}}</td>
-              <td>{{data.Type}}</td>
-              <td >{{data.DateReceived}}</td>
-               <td>{{data.DateSubmited}}</td>
-              <td>{{data.DurationField}} </td>
-             <td>{{data.TimeRecived}}</td>
-              <td>{{data.TimeSubmitted}}</td>
-            </tr>
-            {%endif%}
-            {%endfor%} 
-          </tbody>
-        </table>
+       
            <div>
             <button class="text-center btn btn-sm btn-outline-info"><a class="nav-link navs-link  fs-6 " href="{% url 'dashboard'%}">Back To Main dashboard</a></button>
            </div> 

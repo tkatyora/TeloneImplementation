@@ -13,8 +13,9 @@ from django.contrib.auth import login,logout,authenticate
 E36 = Quotation.objects.all().order_by('-DateReceived')
 contact = Contacts.objects.all()
 first_slide = home.objects.first()
-second_slide = home.objects.all()[1:1]
+second_slide = home.objects.all()[1]
 last_slide = home.objects.last()
+E36Pending = Quotation.objects.filter(Status='Pending').values().count()
 @unauthenticated_user
 def home(request):
     content ={}
@@ -78,7 +79,8 @@ def signout(request):
 def dashboard(request):
     content ={}
     content ={
-    'E36':E36
+    'E36':E36,
+    'Pending':E36Pending
     }  
     return render(request , 'mainDashboard.html',content)
 

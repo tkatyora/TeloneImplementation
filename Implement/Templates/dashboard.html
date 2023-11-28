@@ -50,7 +50,10 @@
               <ul class="dropdown-menu text-end dropdown-menu-dark text-small shadow">
                 <li><a class="dropdown-item" href="#">Settings</a></li>
                 <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li><hr class="dropdown-divider" /></li>
+                {% if user.is_superuser%}
+                <li><a class="dropdown-item" href="http://127.0.0.1:8000/adminDashboard/">SuperUser Dashboard</a></li>
+                {%endif%}
+                
                 <li><a class="dropdown-item" href="{% url 'logout' %}">Log out</a></li>
               </ul>
             </div>
@@ -68,9 +71,15 @@
             <a class="nav-link h5 text-success" href="{% url 'viewDocuments' %}">
              Documents
             </a>
+            <a class="nav-link h5 text-success" href="https://www.google.com/maps/@-18.9884743,32.6390483,15z?entry=ttu" target="_blank" rel="noopener noreferrer">
+              Google Maps
+             </a>
             <a class="nav-link h5 text-warning" href="{% url 'contacts' %}">
              Main Conducts
             </a>
+            <a class="nav-link h5 text-warning" href="https://docs.google.com/spreadsheets/d/10Sn2sktMi2h3AAVZEQxKjZ0aTvrGIWslI8G_AfQADmo/edit#gid=150340438"  target="_blank" rel="noopener noreferrer">
+              Contact list
+             </a>
             <hr>
         
         <span class="h4 ms-3 text-center mt-5 text-black fs-italic">Quotations(E36)</span>

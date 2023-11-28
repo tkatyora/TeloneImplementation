@@ -1,20 +1,22 @@
 from django.shortcuts import render
-from e36.models import *
+from e36.models import Quotation
 
 # Create your views here.
 import datetime
 
 today_date = datetime.date.today()
 start_date = datetime.date(today_date.year, 1, 1) 
-# start_date = (today_date - datetime.timedelta(days=1 * 250))
 min_date = (today_date - datetime.timedelta(days=1 * 8))
-days = (today_date - start_date) 
-week = days // 7
+def WeekReportCalculator():
+    start_date = datetime.date(today_date.year, 1, 1) 
+    days = (today_date - start_date ) + datetime.timedelta(days=1 * 10) 
+    week = (days // 7).days
+    return week
 
-weeks = str(days).split('days',1)[0]
+week = WeekReportCalculator()
 E36 = Quotation.objects.all().order_by('-created')
 # E36 = Quotation.objects.filter(WeekReport=37).values()
-E36WEEK = Quotation.objects.filter(WeekReport=47).values().count()
+E36WEEK = Quotation.objects.filter(WeekReport=week).filter(Status='Completed').values().count()
  
 count = Quotation.objects.count() 
 def  WeeklyReport(request):
@@ -24,7 +26,7 @@ def  WeeklyReport(request):
     'E36':E36,
     'today': today_date,
     'min':min_date,
-    'week':weeks,
+    'week':week,
     
 }    
     return render(request,'Weekly.html',content)
