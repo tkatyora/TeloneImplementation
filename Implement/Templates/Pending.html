@@ -66,8 +66,9 @@
             </tr>
           </thead>
           <tbody>
-            {% for data  in E36 %}
-            {%if user.username == user.username and data.Status == 'Pending'%}
+            {% for data  in pending %}
+           
+            {%if user.username == user.username %}
             <tr >
               <td><a class="nav-link .navs-link fs-6 text-info" href="{{data.FileUrl}}">download</a></td>
               <td  ><a class="text-success nav-link navs-link fs-6" href="{% url 'DetailedE36' data.id %}">{{data.NameClient}}</a></td>
@@ -75,7 +76,7 @@
               <td>{{data.Type}}</td>
               <td>{{data.Status}}</td>
               <td>{{data.DateReceived}} </td>
-                <td>{{user.username}}</td>
+              <td>{{user.username}}</td>
               <td> {{data.created_by}}</td>
               
             </tr>

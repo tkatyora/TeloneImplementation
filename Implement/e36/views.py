@@ -142,7 +142,7 @@ def PendingQoute(request):
         form = addQouteForm()
     content = {}
     content = {
-        'form': Pending,
+        'pending': Pending,
 
     }
     return render(request, 'Pending.html', content)
