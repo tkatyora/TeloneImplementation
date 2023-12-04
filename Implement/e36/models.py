@@ -5,13 +5,16 @@ from datetime import datetime
 from django.utils import timezone
 from datetime import datetime, time, timedelta
 
+defaulttime = time(1,00,00)
 
 
 # Create your models here.
 class Quotation(models.Model):
+	
 	name = [('Internet','Internet'),('VPN','VPN')]
 	status = [('Completed','Completed'),('Pending','Pending')]
-	responsible = [('Dumisani_Mukuchura','Dumisani Mukuchura'),('Jervis_Tsoro','Jervis Tsoro'),('Shylet','Shylet'),('Godwin_Makara','Godwin Makara'),('MAaxwell_Mushaikwa','Maxwell Mushaikwa '),('Last_Sibasa','Last Sibasa')]
+	responsible = [('Dumisani_Mukuchura','Dumisani Mukuchura'),('Jervis_Tsoro','Jervis Tsoro'),('Shylet','Shylet'),('Godwin_Makara','Godwin Makara'),('MAaxwell_Mushaikwa','Maxwell Mushaikwa '),
+				('Last_Sibasa','Last Sibasa'),('Justice Diba','Justice Diba'),('Christine Mariwo','Christine Mariwo')]
 	File = models.FileField(_("E36"), upload_to='', max_length=100,null=True)
 	NameClient = models.CharField(max_length=50,null=True,blank=True)	
 	
@@ -22,7 +25,7 @@ class Quotation(models.Model):
 	DateReceived=models.DateField(null=True, auto_now=False, auto_now_add=False )
 	DateSubmited= models.DateField(null=True, auto_now=False, auto_now_add=False,blank =True,default=timezone.now)
 	TimeRecived = models.TimeField(_("Time Received"), auto_now=False, auto_now_add=False, null=True,blank=True)
-	TimeSubmitted = models.TimeField(_("TimeSubmited"), auto_now=False, auto_now_add=False ,blank =True,null=True,default=timezone.now)
+	TimeSubmitted = models.TimeField(_("TimeSubmited"), auto_now=False, auto_now_add=False ,blank =True,null=True,default=defaulttime)
 	created = models.DateTimeField(_("created at"), auto_now=True, auto_now_add=False ,null=True)
 	updated = models.DateTimeField(null=True,auto_now=False,auto_now_add=True)
 	#ends here
@@ -121,7 +124,7 @@ class Quotation(models.Model):
 			end_time_2 = datetime.strptime(end, '%H:%M:%S')
 			duration_2 = end_time_2 - start_time_2
 			# Convert the time to a timedelta
-			extra = datetime.strptime('00:00:00', '%H:%M:%S') - datetime.strptime('00:00:00', '%H:%M:%S')
+			extra = datetime.strptime('07:00:00', '%H:%M:%S') - datetime.strptime('00:00:00', '%H:%M:%S')
 			# Multiply the timedelta by 2
 			extra *= number_days
 			# Convert the timedelta back to a time

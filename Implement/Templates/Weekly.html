@@ -61,7 +61,7 @@
                    
                   <tr >
                     {% for data  in E36 %}
-                    {%if  data.WeekReport == 48 and data.Status == 'Completed'%}
+                    {%if  data.Status == 'Completed'%}
                     <td >{{data.NameClient}}</td>
                     <td>{{data.Type}}</td>
                     <td >{{data.startdate}}</td>
@@ -93,7 +93,7 @@
           </thead>
           <tbody>
             {% for data  in E36 %}
-             {%if   data.Status == 'Completed' and data.WeekReport == 48%}
+             {%if   data.Status == 'Completed' %}
             <tr >
               <td>{{data.total_duration}}</td>
               <td  >{{data.NameClient}}</td>
@@ -101,7 +101,7 @@
               <td >{{data.startdate}}</td>
               <td>{{data.enddate}}</td>
               <td>{{data.TimeRecived}} </td>
-             <td>${{data.TimeSubmitted}}</td>
+             <td>{{data.TimeSubmitted}}</td>
               <td>E36 {{data.Status}}</td>
               
             </tr>

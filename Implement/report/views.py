@@ -14,7 +14,7 @@ def WeekReportCalculator():
     return week
 
 week = WeekReportCalculator()
-E36 = Quotation.objects.all().order_by('-created')
+E36 = Quotation.objects.all().order_by('-created').filter(WeekReport=week).filter(Status='Completed')
 # E36 = Quotation.objects.filter(WeekReport=37).values()
 E36WEEK = Quotation.objects.filter(WeekReport=week).filter(Status='Completed').values().count()
  

@@ -37,7 +37,7 @@
           >
           <br>
               <div class=" text-center">
-                <h5  class=" text-info"> All Quotation(E36)</h5>
+                <h5  class=" text-info"> All Pending  Quotation(E36)</h5>
                   <h6>NB:Double Click The name of The Client To View More infomation About The E36</h6>
               </div>
               {% for message in messages %}
@@ -67,7 +67,7 @@
           </thead>
           <tbody>
             {% for data  in E36 %}
-            {%if user.username == user.username%}
+            {%if user.username == user.username and data.Status == 'Pending'%}
             <tr >
               <td><a class="nav-link .navs-link fs-6 text-info" href="{{data.FileUrl}}">download</a></td>
               <td  ><a class="text-success nav-link navs-link fs-6" href="{% url 'DetailedE36' data.id %}">{{data.NameClient}}</a></td>

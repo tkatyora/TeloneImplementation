@@ -17,11 +17,12 @@ E36 = Quotation.objects.all().order_by('-created')
 Documents = Document.objects.all()
 Steps = Document.objects.last()
 E36Pending = Quotation.objects.filter(Status='Pending').values().count()
+Pending = Quotation.objects.filter(Status='Pending')
 # Create your views here.
 
 #CRUD OPERATIONS OF QUOTATION
 #1.READ
-# @login_required(login_url='sign_in') 
+@login_required(login_url='sign_in') 
 def ViewQoute(request):
     content ={}
     content ={
@@ -29,12 +30,15 @@ def ViewQoute(request):
       'count':count
    }    
     return render(request,'viewQoute.html',content)
+
+@login_required(login_url='sign_in') 
 def ViewMyQoute(request):
     content ={}
     content ={
       'E36':E36
    }    
     return render(request,'viewMyQuote.html',content)
+@login_required(login_url='sign_in') 
 def StepsToFollow(request):
     content ={}
     content ={
@@ -42,6 +46,7 @@ def StepsToFollow(request):
       
    }    
     return render(request,'Steps.html',content)
+@login_required(login_url='sign_in') 
 def WhatIsE36(request):
     content ={}
     content ={
@@ -49,7 +54,7 @@ def WhatIsE36(request):
    }    
     return render(request,'WhatIsE36.html',content)
 #2.CREATE
-# @login_required(login_url='sign_in') 
+@login_required(login_url='sign_in') 
 def AddQuote(request):
     if request.method == 'POST':
         form = addQouteForm(request.POST, request.FILES)
@@ -72,19 +77,42 @@ def AddQuote(request):
 
     }
     return render(request, 'AddQoute.html', content)
+#3.Update
+@login_required(login_url='sign_in') 
+def updateQuote(request, pk):
+    e36_to_update = Quotation.objects.get(id=pk)  # Querry out the Services which much be updated
+    if request.method == 'POST':
+        form = addQouteForm(request.POST,request.FILES, instance=e36_to_update)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'E36 updated succesfully')
+            return redirect('viewMyE36')
+        else:
+            messages.warning(request, 'Sorry E36 not updated ')
+    else:
+        form = addQouteForm(instance=e36_to_update)
+    content = {}
+    content = {
+        'form':  form,
+        'E36Update': e36_to_update
 
+    }
+    return render(request, 'updateE36.html', content)
+#3.Delete Qoute
+@login_required
 def DeleteQuote(request, pk):
     e36_to_delete = Quotation.objects.get(id=pk)
     if request.method == 'POST':
         e36_to_delete.delete()
         messages.success(request, 'Quotation Deleted Succefully Succesfully Deleted')
-        return redirect('viewE36')
+        return redirect('viewMyE36')
     content = {}
     content = {
         'e36_to_delete': e36_to_delete,
         'e36': E36
     }
     return render(request, 'delete.html', content)
+#4.View detailed Information
 @login_required
 def DetailedQuote(request, pk):
     detailed = Quotation.objects.get(id=pk)
@@ -94,8 +122,33 @@ def DetailedQuote(request, pk):
 
     }
     return render(request, 'detailed.html', content)
+#5.View Pending E36
+@login_required(login_url='sign_in') 
+def PendingQoute(request):
+    if request.method == 'POST':
+        form = addQouteForm(request.POST, request.FILES)
+        if form.is_valid():
+            quotation = form.save(commit=False)
+            quotation.created_by = request.user
+            quotation.WeekReport = week
+            quotation.save()
+           
+            mesage= f'Quoatation added succesfully'
+            messages.success(request,mesage)
+            return redirect('addE36')   
+        else:
+            messages.warning(request, 'Sorry Qoutation not added succesfully')
+    else:
+        form = addQouteForm()
+    content = {}
+    content = {
+        'form': Pending,
+
+    }
+    return render(request, 'Pending.html', content)
 
 
+@login_required(login_url='sign_in') 
 def AddDocuments(request):
     if request.method == 'POST':
         form = DocumentsForm(request.POST, request.FILES)

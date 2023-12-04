@@ -21,7 +21,7 @@
     <br />
     <div class="message mt-3 text-center">
       <h5 class="text-center">Add The E36 You Are Creating </h5>
-      <br>
+  
       {% for message in messages %}
       {% if message.tags == 'success'%}
         <div class=" alert alert-success">
@@ -79,26 +79,19 @@
         <strong>{{form.Receivedfrom|as_crispy_field}}</strong> 
       </p>
      
-       <p class="lead mt-3">
-        <strong>{{form.comments|as_crispy_field}}</strong> 
-      </p>
       <p class="lead mt-3">
         <strong>{{form.Status|as_crispy_field}}</strong> 
-      </p>
-       
-       <p class="lead mt-3 ">
-        <strong>{{form.WeekReport|as_crispy_field}}</strong> 
-      </p>
      
-      <br>
-       <h6 class="text-warning mb-5">Use The Below Fields if You Forget To Upload The E36 Just after Sending it to The Enginner</h5>
       <p class="lead mt-3">
         <strong>{{form.DateSubmited|as_crispy_field}} </strong> 
       </p>
       <p class="lead mt-3">
         <strong>{{form.TimeSubmitted|as_crispy_field}}</strong> 
       </p>
-     
+      <p class="lead mt-3">
+        
+        <strong>{{form.comments|as_crispy_field}}</strong> 
+      </p>
       <br />
     </div>
   </br>
@@ -107,6 +100,8 @@
         Create
       </button>
     </div>
+    
+    
   </br>
   </form>
 </main>

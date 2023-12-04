@@ -15,13 +15,13 @@ days = (today_date - min_date)
 class addQouteForm(ModelForm):
     Type =forms.ChoiceField(choices=Quotation.name, label='Project Scope',required=True)
     NameClient =forms.CharField(label='Name of Client',help_text='Client Who Require Service eg FBC SAMORA MACHEL')
-    Total = forms.DecimalField(label='Grand Total )', max_digits=10, decimal_places=2,help_text='The Total includes the Materials, Transport, Labour, Wayleaves and Engineering costs',required=False)
+    Total = forms.DecimalField(label='Grand (Total )', max_digits=10, decimal_places=2,help_text='The Total includes the Materials, Transport, Labour, Wayleaves and Engineering costs',required=False)
     Status = forms.ChoiceField(choices=Quotation.status , label='Status of E36' ,help_text='If The E36 is completed Select Completed',required=True)
-    comment=forms.CharField(label='Add any Comments You Have', required=False, help_text='Write Anything related to the e36(optional) ',
+    comments=forms.CharField(label='Add any Comments You Have(Optional)', required=False, help_text='Write Anything related to the e36(optional) ',
                               widget=forms.Textarea(
                                   attrs={
-                                      'rows':5,
-                                      'cols':5, 
+                                      'rows':3,
+                                      'cols':3, 
                                   }
                               ))
     File = forms.FileField(label= 'Upload The E36',required=False, max_length=100,  widget=forms.FileInput(
