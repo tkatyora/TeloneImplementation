@@ -46,7 +46,7 @@
                 <thead>
       
                   <tr class="bg-info"></th>
-                    <th scope="col">No. of Quotations Requests Received</th>
+                    <th scope="col">Customer/Client Name</th>
                     <th scope="col">Project Scope</th>
                     <th scope="col">Start Date</th>
                     <th scope="col">Finish Date</th>
@@ -95,7 +95,6 @@
             {% for data  in E36 %}
              {%if   data.Status == 'Completed' %}
             <tr >
-              <td>{{data.total_duration}}</td>
               <td  >{{data.NameClient}}</td>
               <td>{{data.Type}}</td>
               <td >{{data.startdate}}</td>
