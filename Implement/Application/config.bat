@@ -1,3 +1,4 @@
+cd 
 cd Documents
 mkdi Projects
 cd Projects
