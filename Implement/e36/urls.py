@@ -14,5 +14,6 @@ urlpatterns = [
     path('viewDocument',views.ViewDocument , name='viewDocuments'),
     path('calculator',views.Calculator , name='Calculator'),
     path('PendingE36',views.PendingQoute , name='pending'),
+     path('searchQoute/', views.searchQoute, name='search'),
    
 ]

@@ -1,0 +1,78 @@
+{% extends 'dashboard.html' %}
+ {%block content%} {%load static%}
+  {% block title%}
+<head>
+  <meta name="Key Words" content="Nitacagra Softwars Admin Dashboard">
+  <meta name="description" content="This is a platform for NitacagraSoftwares Admins , markerting team, and Accounts team to add and chage something om the website">
+<title>Telone |Delete E36</title>
+</head>
+{%endblock title%}
+<body>
+   <main class=" mt-0 container-fluid  align-items-center justify-content-center"
+     style="width: 68%">
+  <form id="form-id" method="get" class="shadow-lg w-50 mt-5">
+    {%csrf_token%}
+    <br />
+    <div class="message mt-3 text-start mx-sm-5">
+      <h5></h5>
+    </div>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+          <input type="search" 
+           name = 'q'
+           action="{% url 'search' %}" 
+           placeholder="search E36" 
+           class="btn btn-sm "><strong>{{form.search_query|as_crispy_field}}</strong> </input>
+          <button type="submit" class="btn btn-sm ">Search</button>
+        </div>
+        <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+          <span data-feather="calendar" class="align-text-bottom"></span>
+          Filter
+        </button>
+      </div>
+ {% if results %}
+    <ul>
+    {% for data in results %}
+    <table class="table table-bordered table-striped table-sm">
+        <thead>
+
+          <tr class="bg-warning">
+            <th scope="col">Name Client(Click To Download)</th>
+            <th scope="col">Name Client</th>
+            <th scope="col">Received From </th>
+            <th scope="col">Services</th>
+             <th scope="col">Date Submitted</th>
+            <th scope="col">Date Received E36</th>
+            <th scope="col">Status</th>
+            <th scope="col">Weeks</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+         
+          <tr >
+            <td><a class="nav-link .navs-link fs-6 text-info" href="{{data.FileUrl}}">Download</a></td>
+            <td  ><a class="text-success nav-link navs-link fs-6" href="{% url 'DetailedE36' data.id %}">{{data.NameClient}}</a></td>
+            <td >{{data.Receivedfrom}}</td>
+            <td>{{data.Type}}</td>
+            <td>{{data.DateSubmited}}</td>
+            <td>{{data.DateReceived}} </td>
+            <td>{{data.Status}}</td>
+             <td></td>
+           
+          </tr>
+          {%endfor%} 
+        </tbody>
+      </table> 
+      
+    </ul>
+{% else %}
+    <p>No results found.</p>
+{% endif %}
+    </div>
+    <br />
+  </form>
+</main>
+  
+</body>
+{%endblock content%}

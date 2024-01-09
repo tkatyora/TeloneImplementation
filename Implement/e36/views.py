@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required , permission_required
 import datetime
 from report.views import WeekReportCalculator
 
+
 count = Quotation.objects.count() 
 week = WeekReportCalculator()
 print(week)
@@ -146,6 +147,33 @@ def PendingQoute(request):
 
     }
     return render(request, 'Pending.html', content)
+
+#5.Searc for the Qoute
+@login_required(login_url='sign_in') 
+def searchQoute(request):
+    form = SearchForm(request.GET or None)
+    if form.is_valid():
+        query = form.cleaned_data['search_query']
+        results = Quotation.objects.filter(Quotation(Name__icontains=query) | Quotation(File__icontains=query))
+    else:
+        results = []
+# def searchQoute(request):
+#     query = request.GET.get('q', '')
+#     if query:
+#         queryset = (E36(Name__icontains=query))
+#         results = .objects.filter(queryset).distinct()
+#     else:
+#         results = []
+    content = {}
+    content = {
+    'results': results,
+    'form':form
+
+    }
+    return render(request, 'search.html',content)
+
+
+
 
 
 @login_required(login_url='sign_in') 
